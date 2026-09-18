@@ -45,7 +45,7 @@ resource "aws_route_table" "public" {
 resource "aws_route_table" "private" {
     vpc_id  = aws_vpc.main.id 
     route{
-        nat_gateway_id = aws_nat_gateway.ngw[count.index].id
+        nat_gateway_id = aws_nat_gateway.ngw.id
         cidr_block = "0.0.0.0/0"
     }
 }
