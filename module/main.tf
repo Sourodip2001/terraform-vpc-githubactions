@@ -46,7 +46,7 @@ resource "aws_route_table" "private" {
     vpc_id  = aws_vpc.main.id 
     count =  length(var.public_subnet_cidrs)
     route{
-        nat_gateway_id = aws_nat_gateway.ngw.id
+        nat_gateway_id = aws_nat_gateway.ngw[count.index].id
         cidr_block = "0.0.0.0/0"
     }
 }
